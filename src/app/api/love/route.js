@@ -1,6 +1,6 @@
-import { supabase } from "@/lib/supabase";
-
 export const dynamic = "force-dynamic";
+S
+import { supabase } from "@/lib/supabase";
 
 /* GET LOVE COUNT */
 
