@@ -1,10 +1,12 @@
 "use client"
 
 import React, { useEffect, useState, useRef } from "react";
+import { MagneticButton } from "../MagneticButton";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+const [submitted, setSubmitted] = useState(false);
+const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
   e.preventDefault();
@@ -18,11 +20,13 @@ export default function Newsletter() {
 
   const data = await res.json();
 
-  if (data.success || data.message) {
-    setSubmitted(true);
-  }
+if (data.message) {
+  setMessage(data.message);
+  setSubmitted(true);
+}
 
-  setEmail("");
+setEmail("");
+
 };
 
   return (
@@ -50,23 +54,24 @@ export default function Newsletter() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email"
-              className="flex-1 text-neutral-700 rounded-full px-6 py-4 bg-white/70 dark:bg-neutral-900 outline-none focus:ring-2 focus:ring-emerald-400 transition"
+              className="flex-1 text-neutral-700 rounded-full px-6 py-4 bg-white/70 dark:bg-neutral-900 border focus:ring-2 focus:ring-emerald-400 transition"
             />
 
-            <button
+            <MagneticButton
               type="submit"
               className="rounded-full px-8 py-4 bg-black text-white dark:bg-white dark:text-black font-medium hover:opacity-90 transition"
             >
               Subscribe
-            </button>
+            </MagneticButton>
 
           </div>
 
           {submitted && (
-            <p className="mt-6 text-sm text-emerald-600 dark:text-emerald-400">
-              You're in. Welcome to Weylor.
-            </p>
-          )}
+  <p className="mt-6 text-sm text-emerald-600 dark:text-emerald-400">
+    {message}
+  </p>
+)}
+
         </form>
       </div>
     </section>

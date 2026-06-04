@@ -21,7 +21,6 @@ import { Preloader } from "@/components/Preloader";
 
 import WeylorLove from "@/components/WeylorLove";
 
-
 const INSTAGRAM_URL = "https://instagram.com/weylor.world";
 
 
