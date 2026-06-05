@@ -4,11 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import DarkModeToggle from "../DarkModeToggle";
 import InstagramRedirectModal from "@/components/ui/InstagramRedirectModal";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
-import { motion, AnimatePresence } from "framer-motion";
-import WeylorLove from "../WeylorLove";
 
 export default function Navbar() {
   const [visible, setVisible] = useState(false);
@@ -49,20 +46,19 @@ export default function Navbar() {
         <ul className="hidden md:flex items-center gap-8 text-sm font-light">
            <li>
               <Link href="/"
-                onClick={() => setOpenModal(true)}
                 className="hover:opacity-70 transition"
               >
                 Home
               </Link>
            </li>   
               <li>
-            <Link href = '/'
-              onClick={() => setOpenModal(true)}
-              className="hover:opacity-70 transition"
-            >
-              Shop
-            </Link>
-          </li>
+  <button
+    onClick={() => setOpenModal(true)}
+    className="hover:opacity-70 transition"
+  >
+    Shop
+  </button>
+</li>
 
           <li>
             <Link href="/#about" className="hover:opacity-70 transition">
@@ -77,7 +73,7 @@ export default function Navbar() {
           </li>
 
           <li>
-            <Link href="#contact" className="hover:opacity-70 transition">
+            <Link href="/#contact" className="hover:opacity-70 transition">
               Contact
             </Link>
           </li>
@@ -103,19 +99,21 @@ export default function Navbar() {
       {mobileMenu && (
         <div className="md:hidden px-6 pb-6 pt-2 flex flex-col gap-4 text-sm bg-white dark:bg-black border-t border-neutral-200 dark:border-neutral-800 dark:text-orange-200">
           
-            <Link href = '/'
-              onClick={() => setOpenModal(true)}
-              className="rounded-full text-md text-black dark:text-white font-normal"
-            >
-              Home
-            </Link>
+            <Link
+  href="/"
+  onClick={() => setMobileMenu(false)}
+>
+  Home
+</Link>
 
-          <Link href = "/"
-            onClick={() => setOpenModal(true)}
-            className=" dark:hover:text-white hover:text-neutral-800  hover:font-semibold"
-          >
-            Shop
-          </Link>
+          <button
+  onClick={() => {
+    setMobileMenu(false);
+    setOpenModal(true);
+  }}
+>
+  Shop
+</button>
 
           <Link href="/#about" onClick={() => setMobileMenu(false)}
             className=" dark:hover:text-white hover:text-neutral-800  hover:font-semibold"
