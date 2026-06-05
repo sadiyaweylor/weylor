@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Navbar from "@/components/navbar/Navbar";
 import Link from "next/link";
+import { MagneticButton } from "@/components/MagneticButton";
 import ExploreButton from "@/components/ExploreButton";
 
 /* ---------------- STATIC GENERATION ---------------- */
@@ -20,8 +21,20 @@ export async function generateMetadata({ params }) {
 
   const post = journalPosts.find((p) => p.slug === slug);
 
-  if (!post) return notFound();
+  if (!post) return {};
 
+  return {
+    title: post.seo.title,
+    description: post.seo.description,
+    keywords: post.seo.keywords,
+  };
+}
+
+  const post = journalPosts.find((p) => p.slug === slug);
+
+if (!post) {
+  return {};
+}
   const url = `https://weylor.com/journal/${post.slug}`;
 
   /*Create Suggested Posts*/
@@ -119,15 +132,21 @@ export default async function ArticlePage({ params }) {
       </div>
 
       <div className="flex flex-wrap gap-4 mt-16">
+<ExploreButton 
+/>
 
-  <ExploreButton />
+  <MagneticButton>
 
-  <Link
-    href="/journal"
-    className="text-xl mt-10 rounded-full px-10 py-4 inline-flex items-center justify-center border dark:border-white dark:text-white hover:bg-white dark:hover:text-black transition shadow-xl"
-  >
-    Back to Journal
-  </Link>
+<Link
+
+  href="/journal"
+  className="text-xl mt-10 rounded-full px-10 py-4 inline-flex items-center justify-center border dark:border-white dark:text-white transition shadow-xl"
+>
+      Back to Journal
+
+</Link>
+</MagneticButton>
+
 
 </div>
 

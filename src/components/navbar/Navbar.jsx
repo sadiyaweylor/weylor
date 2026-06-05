@@ -101,19 +101,27 @@ export default function Navbar() {
           
             <Link
   href="/"
+              className=" dark:hover:text-white hover:text-neutral-800  hover:font-semibold"
+
   onClick={() => setMobileMenu(false)}
 >
   Home
 </Link>
+<Link   href=""
+            className=" dark:hover:text-white hover:text-neutral-800  hover:font-semibold"
 
-          <button
+>
+<button
   onClick={() => {
     setMobileMenu(false);
     setOpenModal(true);
+
   }}
 >
   Shop
 </button>
+</Link>
+          
 
           <Link href="/#about" onClick={() => setMobileMenu(false)}
             className=" dark:hover:text-white hover:text-neutral-800  hover:font-semibold"
